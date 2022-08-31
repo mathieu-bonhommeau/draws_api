@@ -55,9 +55,10 @@ class DrawPicture extends Fixture
 
                 for ($h = 0; $h < random_int(0, 25); $h++) {
                     $comment = (new Comment())
-                        ->setComment('blablabla')
+                        ->setComment('Lorem ipsum dolor sit amet, consectetur adipiscing elit')
+                        ->setStars(random_int(0, 5))
                         ->setCreatedAt(new \DateTimeImmutable())
-                        ->setUserComment($users[random_int(0, 2)])
+                        ->setUser($users[random_int(0, 2)])
                         ->setDraw($draw);
                     $manager->persist($comment);
                 }

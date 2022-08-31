@@ -23,11 +23,14 @@ class Comment
 
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'comments')]
     #[ORM\JoinColumn(nullable: false)]
-    private $userComment;
+    private $user;
 
     #[ORM\ManyToOne(targetEntity: Draw::class, inversedBy: 'comments')]
     #[ORM\JoinColumn(nullable: false)]
     private $draw;
+
+    #[ORM\Column(type: 'integer', nullable: true)]
+    private $stars;
 
     public function getId(): ?int
     {
@@ -58,14 +61,14 @@ class Comment
         return $this;
     }
 
-    public function getUserComment(): ?User
+    public function getUser(): ?User
     {
-        return $this->userComment;
+        return $this->user;
     }
 
-    public function setUserComment(?User $userComment): self
+    public function setUser(?User $user): self
     {
-        $this->userComment = $userComment;
+        $this->user = $user;
 
         return $this;
     }
@@ -78,6 +81,18 @@ class Comment
     public function setDraw(?Draw $draw): self
     {
         $this->draw = $draw;
+
+        return $this;
+    }
+
+    public function getStars(): ?int
+    {
+        return $this->stars;
+    }
+
+    public function setStars(?int $stars): self
+    {
+        $this->stars = $stars;
 
         return $this;
     }
